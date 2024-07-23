@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -29,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,19 +38,28 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $data['slug'] = Str::of($data['title'])->slug();
+
+        $post = new Post();
+
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->slug = $data['slug'];
+        $post->save();
+        return redirect()->route('admin.posts.index')->with('message', 'Porgetto creato correttamente');
+        // $post->slug = Str::of($post->title)->slug();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    // public function show(string $slug)
+    public function show(Post $post)
     {
-        $post = Post::where('slug', $slug)->first();
-
-        // return view('admin.posts.show', compact('post'));
-
-        dd($post);
+        // $post = Post::where('slug', $slug)->first();
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -57,7 +67,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**

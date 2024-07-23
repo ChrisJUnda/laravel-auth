@@ -30,8 +30,13 @@ Route::middleware('auth', 'verified')
         //Admin
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+        // //Post
+        Route::resource('posts', PostController::class)->parameters([
+            'posts' => 'post:slug'
+        ]);
+
         //Post
-        Route::resource('posts', PostController::class);
+        // Route::resource('posts', PostController::class);
     });
 
 Route::middleware('auth')->group(function () {

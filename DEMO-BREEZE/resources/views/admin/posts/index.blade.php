@@ -8,11 +8,20 @@
                     Lista dei lavori
                 </h1>
                 <div>
-                    <button class="btn btn-primary">
+                    <a class="btn btn-primary" as="button" href="{{ route('admin.posts.create') }}">
+                        Crea
+                    </a>
+                    {{-- <button class="btn btn-primary">
                         Crea Nuovo
-                    </button>
+                    </button> --}}
                 </div>
+
             </div>
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="col-12 p-3">
                 <table class="table">
                     <thead>
@@ -37,12 +46,13 @@
                                 </td>
                                 <td>
                                     <div class="d-flex gap-2 ">
-                                        <a href="{{ route('admin.posts.show', $post->id) }}" as="button"
+                                        <a href="{{ route('admin.posts.show', $post) }}" as="button"
                                             class="btn btn-info ">
                                             {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
                                             <i class="fa-solid fa-magnifying-glass fa-sm"></i>
                                         </a>
-                                        <a href="#" as="button" class="btn btn-warning ">
+                                        <a href="{{ route('admin.posts.edit', $post) }}" as="button"
+                                            class="btn btn-warning ">
                                             <i class="fa-solid fa-file-pen fa-sm"></i>
                                         </a>
                                         <a href="#" as="button" class="btn btn-danger ">
