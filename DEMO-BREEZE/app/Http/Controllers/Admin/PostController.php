@@ -18,8 +18,10 @@ class PostController extends Controller
         $posts = Post::all();
 
 
-
+        // dd($posts);
         return view('admin.posts.index', compact('posts'));
+
+        // return 'sono io';
     }
 
     /**
@@ -43,15 +45,11 @@ class PostController extends Controller
      */
     public function show(string $slug)
     {
-        // return 'sono il dettaglio dei lavori';
-
-
         $post = Post::where('slug', $slug)->first();
 
-        return view('admin.posts.show', compact('post'));
-        // dd($post);
         // return view('admin.posts.show', compact('post'));
-        // return view('admin.posts.show', compact('post'));
+
+        dd($post);
     }
 
     /**
