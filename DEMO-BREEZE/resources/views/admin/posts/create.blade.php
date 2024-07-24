@@ -27,7 +27,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="cover-image" class="form-label">Carica Immagine</label>
-                        <input class="form-control" type="file" id="cover-image" name="cover_image">
+                        <input class="form-control" type="file" id="cover-image" name="cover_image"
+                            value="{{ old('cover_image') }}">
                     </div>
                     <button class="btn btn-primary">
                         Crea nuovo progetto

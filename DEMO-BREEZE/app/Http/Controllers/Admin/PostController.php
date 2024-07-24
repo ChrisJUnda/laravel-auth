@@ -105,6 +105,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
 
+        //se presente immagine la cancello
+
+        if ($post->cover_image) {
+            //cancello immagine
+            Storage::delete($post->cover_image);
+        }
+
         $post_id = $post->id;
 
 

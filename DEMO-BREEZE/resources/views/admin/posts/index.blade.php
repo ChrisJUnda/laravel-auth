@@ -39,6 +39,9 @@
                                     {{ $post->id }}
                                 </th>
                                 <td>
+                                    @if ($post->cover_image)
+                                        image -
+                                    @endif
                                     {{ $post->title }}
                                 </td>
                                 <td>
