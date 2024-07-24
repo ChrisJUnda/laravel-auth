@@ -55,9 +55,16 @@
                                             class="btn btn-warning ">
                                             <i class="fa-solid fa-file-pen fa-sm"></i>
                                         </a>
-                                        <a href="#" as="button" class="btn btn-danger ">
-                                            <i class="fa-solid fa-trash fa-sm"></i>
-                                        </a>
+                                        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger "><i class="fa-solid fa-trash fa-sm"></i></button>
+
+                                        </form>
+                                        {{-- <a href="{{ route('admin.posts.destroy', $post) }}" as="button"
+                                            class="btn btn-danger ">
+
+                                        </a> --}}
                                     </div>
                                     <div></div>
                                     <div></div>

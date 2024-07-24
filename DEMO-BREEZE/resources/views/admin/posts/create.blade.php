@@ -14,7 +14,7 @@
             @include('shared.error')
 
             <div class="col-12 p-3">
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="post-title" class="form-label">Titolo</label>
@@ -24,6 +24,10 @@
                     <div class="mb-3">
                         <label for="post-content" class="form-label">Descrizione</label>
                         <textarea class="form-control" id="post-content" rows="5" name="content"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cover-image" class="form-label">Carica Immagine</label>
+                        <input class="form-control" type="file" id="cover-image" name="cover_image">
                     </div>
                     <button class="btn btn-primary">
                         Crea nuovo progetto
